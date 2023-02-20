@@ -25,11 +25,14 @@ public:
 
     bool solve(Point2 start, Point2 goal);
 
-    std::vector<Point2> getPath();
+    std::vector<Point2> getPath()
+    {
+        return _path;
+    }
 
 private:
+    void computePath(NodeSharedPtr goal);
     float computeHeuristic(const Point2& start, const Point2& goal);
-
     int computeHash(const Point2& pos);
 
     CostMap _costmap;

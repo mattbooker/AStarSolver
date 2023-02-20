@@ -50,7 +50,7 @@ bool AStar::solve(Point2 start, Point2 goal)
 
         if (cur->pos == goal)
         {
-            // Todo: Store path
+            computePath(cur);
             return true;
         }
 
@@ -113,6 +113,23 @@ bool AStar::solve(Point2 start, Point2 goal)
     }
 
     return false;
+}
+
+
+void AStar::computePath(NodeSharedPtr goal)
+{
+    std::vector<Point2> results;
+    NodeSharedPtr cur = goal;
+    while(cur != nullptr)
+    {
+        results.push_back(cur->pos);
+        cur = cur->parent;
+    }
+
+    // Reverse path so we have from start to goal
+    std::reverse(results.begin(), results.end());
+
+    _path = results;
 }
 
 
