@@ -64,8 +64,10 @@ bool AStar::solve(Point2 start, Point2 goal)
             if (!_costmap.inBounds(nbr_pos))
                 continue;
 
+            uint8_t map_cost = _costmap.getCost(nbr_pos);
+
             // Skip if cost is high enough to be an obstacle
-            if (_costmap.getCost(nbr_pos) >= OBS_THRESHOLD)
+            if (map_cost >= OBS_THRESHOLD)
                 continue;
 
             int hash = computeHash(nbr_pos);
@@ -79,7 +81,7 @@ bool AStar::solve(Point2 start, Point2 goal)
                 if (existing_node->isClosed)
                     continue;
 
-                float cur_travel_cost = cur->g + _travel_cost[dir];
+                float cur_travel_cost = cur->g + _travel_cost[dir] + map_cost;
 
                 // If current path to existing node is shorter, then edit existing node
                 if (cur_travel_cost < existing_node->g)
@@ -100,7 +102,7 @@ bool AStar::solve(Point2 start, Point2 goal)
                 // Node doesn't exist so just add it
                 NodeSharedPtr nbr_node = std::make_shared<Node>();
                 nbr_node->pos = nbr_pos;
-                nbr_node->g = cur->g + _travel_cost[dir];
+                nbr_node->g = cur->g + _travel_cost[dir] + map_cost;
                 nbr_node->h = computeHeuristic(nbr_pos, goal);
                 nbr_node->f = nbr_node->g + nbr_node->h;
                 nbr_node->parent = cur;
