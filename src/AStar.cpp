@@ -9,7 +9,7 @@ Defines connectivity of neighbourhood
 */
 #define NBR_CONNECTEDNESS 8
 
-#define OBS_THRESHOLD 250
+#define OBS_THRESHOLD 127
 
 AStar::AStar(CostMap map) : _costmap(map)
 {
