@@ -27,6 +27,8 @@ int main(int argc, char *argv[])
     else
         printf("Solution not found\n");
 
-    std::vector<Point2> test;
-    map.drawAndShowPath(start, goal, test);
+    std::vector<Point2> solution = solver.getPath();
+
+    printf("Solution len = %d\n", solution.size());
+    map.drawAndShowPath(start, goal, solution);
 }

@@ -47,12 +47,24 @@ void CostMap::drawAndShowPath(const Point2& start, const Point2& goal, const std
     cv::Mat drawn_map;
     cv::bitwise_not(_map, drawn_map);
 
+    // Convert so we can add color
+    cv::cvtColor(drawn_map, drawn_map, cv::COLOR_GRAY2BGR);
+
     cv::Point start_point = cv::Point(start.x, start.y);
-    cv::circle(drawn_map, start_point, 5, cv::Scalar(0, 0, 0), -1);
+    cv::circle(drawn_map, start_point, 5, cv::Scalar(0, 255, 0), -1);
 
     cv::Point goal_point = cv::Point(goal.x, goal.y);
-    cv::circle(drawn_map, goal_point, 5, cv::Scalar(0, 0, 0), -1);
+    cv::circle(drawn_map, goal_point, 5, cv::Scalar(0, 0, 255), -1);
 
+    if (path.size() > 0)
+    {
+        for (int i = 0; i < path.size() - 2; i++)
+        {
+            cv::Point p1 = cv::Point(path[i].x, path[i].y);
+            cv::Point p2 = cv::Point(path[i+1].x, path[i+1].y);
+            cv::line(drawn_map, p1, p2, cv::Scalar(255, 0, 0), 2, cv::LINE_AA);
+        }
+    }
 
     cv::imshow("Map with Drawings", drawn_map);
     cv::waitKey(0);
