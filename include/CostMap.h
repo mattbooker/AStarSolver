@@ -1,18 +1,24 @@
-#ifndef MAP_H
-#define MAP_H
+#ifndef COSTMAP_H
+#define COSTMAP_H
 
 #include <string>
 #include <memory>
 #include <opencv2/opencv.hpp>
 
-class Map
+struct Point2
+{
+    int x;
+    int y;
+};
+
+class CostMap
 {
 public:
     bool loadMap(std::string file_name);
 
-    uint8_t getCost(int x, int y);
+    uint8_t getCost(Point2 pos);
 
-    bool inBounds(int x, int y);
+    bool inBounds(Point2 pos);
 
     void showMap();
 

@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Map.h"
+#include "CostMap.h"
 
 int main(int argc, char *argv[])
 {
-    Map map;
+    CostMap map;
 
     bool success = map.loadMap("../example.png");
 
@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
         printf("Error: Could not load image");
         return -1;
     }
-
 
     map.showMap();
 }

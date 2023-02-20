@@ -1,7 +1,7 @@
-#include "Map.h"
+#include "CostMap.h"
 #include <opencv2/imgproc/imgproc.hpp>
 
-bool Map::loadMap(std::string file_name)
+bool CostMap::loadMap(std::string file_name)
 {
     cv::Mat img = cv::imread(file_name);
 
@@ -15,14 +15,14 @@ bool Map::loadMap(std::string file_name)
     return true;
 }
 
-uint8_t Map::getCost(int x, int y)
+uint8_t CostMap::getCost(Point2 pos)
 {
-    return _map.at<uint8_t>(x, y);
+    return _map.at<uint8_t>(pos.x, pos.y);
 }
 
-bool Map::inBounds(int x, int y)
+bool CostMap::inBounds(Point2 pos)
 {
-    if (x < 0 || x >= _map.cols || y < 0 || y >= _map.rows)
+    if (pos.x < 0 || pos.x >= _map.cols || pos.y < 0 || pos.y >= _map.rows)
     {
         return false;
     }
@@ -30,9 +30,9 @@ bool Map::inBounds(int x, int y)
     return true;
 }
 
-void Map::showMap()
+void CostMap::showMap()
 {
     cv::imshow("Map Window", _map);
     cv::waitKey(0);
-    cv::destroyWindow("Map Window");
+    cv::destroyAllWindows();
 }
