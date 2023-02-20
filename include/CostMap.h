@@ -21,11 +21,13 @@ class CostMap
 public:
     bool loadMap(std::string file_name);
 
-    uint8_t getCost(Point2 pos);
+    uint8_t getCost(const Point2& pos);
 
-    bool inBounds(Point2 pos);
+    bool inBounds(const Point2& pos);
 
     void showMap();
+
+    void drawAndShowPath(const Point2& start, const Point2& goal, const std::vector<Point2>& path);
 
 private:
     cv::Mat _map;

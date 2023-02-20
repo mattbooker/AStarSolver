@@ -16,10 +16,9 @@ int main(int argc, char *argv[])
 
     map.showMap();
 
-
     AStar solver(map);
-    Point2 start = {0, 0};
-    Point2 goal = {500, 500};
+    Point2 start = {50, 50};
+    Point2 goal = {500, 300};
 
     bool sol = solver.solve(start, goal);
 
@@ -27,4 +26,7 @@ int main(int argc, char *argv[])
         printf("Solution Found\n");
     else
         printf("Solution not found\n");
+
+    std::vector<Point2> test;
+    map.drawAndShowPath(start, goal, test);
 }
