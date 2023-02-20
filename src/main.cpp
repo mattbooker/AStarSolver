@@ -17,18 +17,21 @@ int main(int argc, char *argv[])
     map.showMap();
 
     AStar solver(map);
-    Point2 start = {50, 50};
-    Point2 goal = {500, 300};
+    Point2 start = {70, 25};
+    Point2 goal = {600, 500};
 
-    bool sol = solver.solve(start, goal);
+    
+    bool solution_found = solver.solve(start, goal);
 
-    if (sol)
+    if (solution_found)
+    {
         printf("Solution Found\n");
+        std::vector<Point2> solution = solver.getPath();
+
+        printf("Solution len = %d\n", solution.size());
+        map.drawAndShowPath(start, goal, solution); 
+    }
     else
         printf("Solution not found\n");
-
-    std::vector<Point2> solution = solver.getPath();
-
-    printf("Solution len = %d\n", solution.size());
-    map.drawAndShowPath(start, goal, solution);
+    
 }

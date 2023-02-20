@@ -20,7 +20,7 @@ bool CostMap::loadMap(std::string file_name)
 
 uint8_t CostMap::getCost(const Point2& pos)
 {
-    return _map.at<uint8_t>(pos.x, pos.y);
+    return _map.at<uint8_t>(pos.y, pos.x);
 }
 
 bool CostMap::inBounds(const Point2& pos)
