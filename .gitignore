@@ -1,2 +1,4 @@
 # ignore CMake Outputs
 build/
+
+.vscode/
