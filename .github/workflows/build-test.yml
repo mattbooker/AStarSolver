@@ -1,0 +1,23 @@
+name: build-test
+on: [push]
+jobs:
+  build-for-ubuntu-20-04:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Dovyski/setup-opencv-action@v1.1
+        with:
+          opencv-version: '4.2.0'
+      - run: cmake . 
+      - run: make .
+  
+  build-for-ubuntu-22-04:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Dovyski/setup-opencv-action@v1.1
+        with:
+          opencv-version: '4.2.0'
+      - run: cmake . 
+      - run: make .
+
