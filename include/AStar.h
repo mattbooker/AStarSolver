@@ -48,7 +48,7 @@ class NodeComparator
 public:
     bool operator()(const NodeSharedPtr &a, const NodeSharedPtr &b) const
     {
-        return a->f < b->f;
+        return a->f > b->f;
     }
 };
 

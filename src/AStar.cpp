@@ -102,6 +102,7 @@ bool AStar::solve(Point2 start, Point2 goal)
                 nbr_node->pos = nbr_pos;
                 nbr_node->g = cur->g + _travel_cost[dir];
                 nbr_node->h = computeHeuristic(nbr_pos, goal);
+                nbr_node->f = nbr_node->g + nbr_node->h;
                 nbr_node->parent = cur;
 
                 // Add to visited
