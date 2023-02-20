@@ -18,6 +18,7 @@ jobs:
       - uses: Dovyski/setup-opencv-action@v1.1
         with:
           opencv-version: '4.2.0'
+          install-deps: false
       - run: cmake . 
       - run: make .
 
