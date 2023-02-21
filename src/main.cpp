@@ -70,8 +70,6 @@ int main(int argc, const char **argv)
         return -1;
     }
 
-    map.showMap();
-
     AStar solver(map);
 
     auto begin = std::chrono::high_resolution_clock::now();
