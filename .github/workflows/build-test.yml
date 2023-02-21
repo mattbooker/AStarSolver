@@ -5,9 +5,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - uses: Dovyski/setup-opencv-action@v1.1
-        with:
-          opencv-version: '4.6.0'
+      - run: sudo apt update && sudo apt upgrade
+      - run: sudo apt install libopencv-dev
       - run: cmake . 
       - run: make .
   
@@ -15,9 +14,8 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - uses: Dovyski/setup-opencv-action@v1.1
-        with:
-          opencv-version: '4.6.0'
+      - run: sudo apt update && sudo apt upgrade
+      - run: sudo apt install libopencv-dev
       - run: cmake . 
       - run: make .
 
