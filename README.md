@@ -1,5 +1,8 @@
-# AStarSolver
-Take home challenge for Weston Robotics
+# A* Solver
+Take home challenge for Weston Robotics. 
+
+Example run on test map:
+![](imgs/solved_example.png)
 
 ## Requirements
 This solution has been tested with OpenCV 4.2.0 but should work with any 4.X version.
@@ -20,9 +23,11 @@ make .
 ```
 
 ## Usage
-The -i flag allows you to specify which input image you would like to use.
-The -s flag denotes which pixel in the image to use as the start location
-The -g flag denotes which pixel in the image to use as the goal location
+The `-i` flag allows you to specify which input image you would like to use.
+
+The `-s` flag denotes which pixel in the image to use as the start location.
+
+The `-g` flag denotes which pixel in the image to use as the goal location.
 ```
 ./AStarSolver -i <path to input map> -s x,y -g x,y
 ```
